@@ -57,10 +57,10 @@ int main(int argc, char *argv[])
 
     
 
-    clock_t start, end;
-    double cpu_time_used;
+    struct timespec start, end;
+    double elapsed;
 
-    start = clock();
+    clock_gettime(CLOCK_MONOTONIC, &start);
     
 
     for (k = 0; k < p; k++)
@@ -72,11 +72,12 @@ int main(int argc, char *argv[])
     {
         pthread_join(thread_array[k], NULL);
     }
-    end = clock();
-    cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
+    clock_gettime(CLOCK_MONOTONIC, &end);
+    elapsed = (end.tv_sec - start.tv_sec);
+    elapsed += (end.tv_nsec - start.tv_nsec) / 1000000000.0;
 
     // save output
-    Lab1_saveoutput(C, &n, cpu_time_used);
+    Lab1_saveoutput(C, &n, elapsed);
     // Handle memory leak
 
     for (i = 0; i < n; i++)
