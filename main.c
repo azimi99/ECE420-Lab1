@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-#include <time.h>
+#include "timer.h"
 #include "lab1_IO.h"
 
 int **A;
@@ -57,11 +57,10 @@ int main(int argc, char *argv[])
 
     
 
-    struct timespec start, end;
+    double start, end;
     double elapsed;
 
-    clock_gettime(CLOCK_MONOTONIC, &start);
-    
+    GET_TIME(start);
 
     for (k = 0; k < p; k++)
     {
@@ -72,9 +71,9 @@ int main(int argc, char *argv[])
     {
         pthread_join(thread_array[k], NULL);
     }
-    clock_gettime(CLOCK_MONOTONIC, &end);
-    elapsed = (end.tv_sec - start.tv_sec);
-    elapsed += (end.tv_nsec - start.tv_nsec) / 1000000000.0;
+    GET_TIME(end);
+    elapsed = (end - start);
+
 
     // save output
     Lab1_saveoutput(C, &n, elapsed);
