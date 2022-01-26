@@ -18,7 +18,7 @@ void *threadfunc(void *rank)
     int x = my_rank / sqrt(p);
     int my_first_row = x * (n / sqrt(p));
     int my_last_row = (x + 1) * (n / sqrt(p)) - 1;
-    int y = (my_rank % (int)sqrt(p))*(my_rank % (int)sqrt(p));
+    int y = (my_rank % (int)sqrt(p));
     int my_first_col = y * (n / sqrt(p));
     int my_last_col = (y + 1) * (n / sqrt(p)) - 1;
 
