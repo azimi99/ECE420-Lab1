@@ -1,3 +1,36 @@
+/*
+Multiply two same sized square matrices using threads and generate an output matrix with elapsed time
+
+-----
+Compiling:
+    > gcc main.c lab1_IO.c -o main -lpthread -Wall -lm
+
+-----
+Synopsis:
+    main [p]
+
+-----
+Argument:
+    -p: Number of threads used. Should be square and factor of n^2 (n is size of input square nxn matrices)
+
+-----
+Outputs:
+    Output file:
+    data_output: storing the multiplied matrix and elapsed time using threads
+
+-----
+Error returns:
+    -1    unexpected options
+    -2    fail to open file 
+
+-----
+Example:
+    
+    >main 4
+    Process the matrix multiplication from input matrices"data_input" 
+    and store the resulting matrix  and elapsed time in "data_output"
+*/
+
 #include <pthread.h>
 #include <stdio.h>
 #include <stdlib.h>
