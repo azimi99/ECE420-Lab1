@@ -18,7 +18,7 @@ void *threadfunc(void *rank)
 {
     //cast rank from void to int
     int my_rank = (int)rank;
-    int i, j;
+    int i, j, k;
     //Map rank to block row in the matrix
     int x = my_rank / sqrt(p);
     //First row in the respective block
