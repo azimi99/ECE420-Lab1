@@ -37,7 +37,7 @@ void *threadfunc(void *rank)
             C[i][j] = 0;
 
             // do matrix calculation for determinants 
-            for (int k = 0; k < n; k++)
+            for (k = 0; k < n; k++)
                 C[i][j] += A[i][k] * B[k][j];
         }
 
